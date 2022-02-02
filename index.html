@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.1/papaparse.min.js"
+  integrity="sha512-EbdJQSugx0nVWrtyK3JdQQ/03mS3Q1UiAhRtErbwl1YL/+e2hZdlIcSURxxh7WXHTzn83sjlh2rysACoJGfb6g=="
+  crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <title>CSV Uploader</title>
+</head>
+<body>
+    <h2>Upload CSV</h2>
+    <input id="csv" name="csv" type="file" accept=".csv">
+</body>
+<script>
+
+    const fileInput = document.getElementById('csv');
+    fileInput.addEventListener('change', function (event) {
+      const csvInput = event.target;
+      const file = csvInput.files[0];
+      Papa.parse(file, {
+        complete: function (results) {
+          console.log(results.data); 
+          // process the JSON
+        }
+      });
+    });
+  </script>
+
+</html>
