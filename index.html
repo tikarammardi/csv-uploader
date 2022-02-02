@@ -21,9 +21,36 @@
       const file = csvInput.files[0];
       Papa.parse(file, {
         complete: function (results) {
-          console.log(results.data); 
+        
+         console.log(results.data);
+
+         
           // process the JSON
+
+          const uploadJsonData = async (data) => {
+            try {
+                const response = await fetch('https://74hy6mycd5.execute-api.us-east-1.amazonaws.com/upload', {
+                 method: 'POST',
+                 headers: {
+                   'Content-Type': 'application/json'
+                   },
+                   body: JSON.stringify({
+                        data
+                    })
+                 });
+                 const data = await response.json();
+                 console.log(data);
+               } catch(error) {
+            
+
+                  console.log(error)
+                 } 
+            }
+
+            uploadJsonData(results.data);
         }
+
+        
       });
     });
   </script>
