@@ -27,7 +27,7 @@
          
           // process the JSON
 
-          const uploadJsonData = async (data) => {
+          const uploadJsonData = async (payload) => {
             try {
                 const response = await fetch('https://74hy6mycd5.execute-api.us-east-1.amazonaws.com/upload', {
                  method: 'POST',
@@ -35,7 +35,7 @@
                    'Content-Type': 'application/json'
                    },
                    body: JSON.stringify({
-                        data
+                        payload
                     })
                  });
                  const data = await response.json();
