@@ -21,8 +21,9 @@
       const csvInput = event.target;
       const file = csvInput.files[0];
       Papa.parse(file, {
+          header:true,
         complete: function (results) {
-        
+            
          console.log(results.data);
 
          
@@ -36,9 +37,11 @@
                    'Content-Type': 'application/json'
                    },
                    body: JSON.stringify({
-                        payload
+                        data:payload
                     })
+                
                  });
+                 console.log('response is', response);
                  const data = await response.json();
                  console.log(data);
                  document.getElementById("message").innerHTML = data.message;
@@ -51,8 +54,6 @@
 
             uploadJsonData(results.data);
         }
-
-        
       });
     });
   </script>
