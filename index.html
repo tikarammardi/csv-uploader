@@ -31,7 +31,7 @@
 
           const uploadJsonData = async (payload) => {
             try {
-                const response = await fetch('http://ec2-54-164-209-91.compute-1.amazonaws.com:8080/upload', {
+                const response = await fetch('https://pa4ddb78jh.execute-api.us-east-1.amazonaws.com/dev/upload', {
                  method: 'POST',
                  headers: {
                    'Content-Type': 'application/json'
