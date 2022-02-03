@@ -12,6 +12,7 @@
 <body>
     <h2>Upload CSV</h2>
     <input id="csv" name="csv" type="file" accept=".csv">
+    <p id="message"></p>
 </body>
 <script>
 
@@ -40,9 +41,10 @@
                  });
                  const data = await response.json();
                  console.log(data);
+                 document.getElementById("message").innerHTML = data.message;
                } catch(error) {
             
-
+                document.getElementById("message").innerHTML = 'Someting went wrong';
                   console.log(error)
                  } 
             }
